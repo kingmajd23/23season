@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>TWENTY THREE SEASON — Coming Soon</title>
+  <meta name="description" content="TWENTY THREE SEASON — Join the waitlist"/>
+  <style>
+    html,body{margin:0;padding:0;background:#000;color:#facc15;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .box{max-width:760px;margin:0 auto;padding:56px 24px;text-align:center}
+    .card{background:#0a0a0a;border:1px solid #27272a;color:#fefce8;border-radius:16px;padding:24px}
+    .in{height:44px;border-radius:8px;background:rgba(0,0,0,.4);border:1px solid #3f3f46;color:#fefce8;padding:0 12px}
+    .btn{height:44px;border-radius:12px;font-weight:800;background:#facc15;color:#000;padding:0 16px;border:none}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1 style="font-size:42px;line-height:1.05;margin:0 0 6px">COMING SOON</h1>
+    <p style="opacity:.9;margin:0 0 24px">TWENTY THREE SEASON — join the waitlist to get the drop first.</p>
+    <div class="card">
+      <form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block'">
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          <input class="in" placeholder="Your name" required/>
+          <input class="in" type="email" placeholder="you@example.com" required/>
+          <button class="btn" type="submit">Join the List</button>
+        </div>
+        <p id="ok" style="display:none;margin-top:10px;color:#bbf7d0">You're in. We'll email you when we launch.</p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
