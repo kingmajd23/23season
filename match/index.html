@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TWENTY THREE SEASON — Match gallery to @imangadzhi</title>
+<meta name="description" content="Match photos from the Twenty Three Season x Blacknoir gallery to Iman Gadzhi's latest Instagram post"/>
+<style>
+  :root{--gold:#facc15;--bg:#000;--card:#0a0a0a;--line:#27272a;--ink:#fefce8;--dim:#a1a1aa}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 120px}
+  h1{color:var(--gold);font-size:30px;line-height:1.1;margin:0 0 4px;letter-spacing:.5px}
+  .sub{color:var(--dim);margin:0 0 26px;font-size:14px}
+  .grid2{display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:22px}
+  @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .panel h2{margin:0 0 10px;font-size:15px;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px}
+  .hint{color:var(--dim);font-size:12.5px;line-height:1.5;margin:8px 0}
+  .btn{display:inline-block;background:var(--gold);color:#000;font-weight:800;border:none;border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  input[type=url]{flex:1;min-width:200px;height:40px;border-radius:8px;background:rgba(0,0,0,.5);border:1px solid #3f3f46;color:var(--ink);padding:0 10px;font-size:13px}
+  iframe.ig{width:100%;border:1px solid var(--line);border-radius:12px;background:#111}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+  .chip{border:1px solid var(--line);background:#111;color:var(--ink);border-radius:999px;padding:7px 13px;font-size:12.5px;cursor:pointer}
+  .chip.on{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+  .folder{margin:0 0 6px}
+  .folder h3{font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:1.2px;margin:18px 0 10px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+  .card{position:relative;background:#111;border:2px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .08s ease,border-color .12s}
+  .card:hover{transform:translateY(-2px)}
+  .card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#18181b}
+  .card .nm{font-size:11px;color:var(--dim);padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .card.matched{border-color:var(--gold)}
+  .card.matched::after{content:"★ MATCHED";position:absolute;top:8px;left:8px;background:var(--gold);color:#000;font-size:10px;font-weight:800;padding:3px 7px;border-radius:6px;letter-spacing:.5px}
+  .card .fallback{display:none;padding:18px 10px;font-size:12px;color:var(--dim);text-align:center}
+  .card .fallback a{color:var(--gold)}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(10,10,10,.96);border-top:1px solid var(--line);backdrop-filter:blur(6px)}
+  .bar .in{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .count{font-weight:800;color:var(--gold);font-size:14px}
+  textarea#out{position:absolute;left:-9999px;top:-9999px}
+  .toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-weight:700;font-size:13px;padding:9px 16px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>MATCH YOUR GALLERY → @imangadzhi</h1>
+  <p class="sub">Twenty Three Season × Blacknoir gallery (99 files, Google Drive) side-by-side with Iman Gadzhi's latest Instagram post.</p>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>Step 1 — His last post</h2>
+      <div class="row" style="margin-bottom:10px">
+        <a class="btn" href="https://www.instagram.com/imangadzhi/" target="_blank" rel="noopener">Open @imangadzhi ↗</a>
+        <button class="btn ghost" id="reload">Reload embed</button>
+      </div>
+      <div class="row" style="margin-bottom:12px">
+        <input type="url" id="posturl" placeholder="Paste his last post/reel URL here…"/>
+        <button class="btn" id="loadpost">Show post</button>
+      </div>
+      <p class="hint">The frame below tries to embed his profile feed (latest posts first). If Instagram blocks the frame in your browser, open his profile with the button above, copy the link of the newest post, paste it here and hit <b>Show post</b> — the exact post then renders inline.</p>
+      <iframe class="ig" id="igframe" style="height:560px" loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="panel">
+      <h2>Step 2 — Tap the photos that match</h2>
+      <div class="filters" id="filters"></div>
+      <p class="hint">Thumbnails load straight from Google Drive — be signed in to the Google account that has access to the “twenty three season x blacknoir” folder. Tap a card to mark it as a match; your picks are saved on this device.</p>
+      <div id="gallery"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar"><div class="in">
+  <span class="count" id="count">0 matched</span>
+  <button class="btn" id="copy">Copy matched list</button>
+  <a class="btn ghost" href="https://drive.google.com/drive/folders/1UF5qwmdHMwAa7wZLHvd9QPgK99Vgi0bb" target="_blank" rel="noopener">Open Drive folder ↗</a>
+  <button class="btn ghost" id="clear">Clear</button>
+</div></div>
+<textarea id="out"></textarea>
+<div class="toast" id="toast">Copied ✓</div>
+
+<script>
+// [folder, file name, Drive file id]
+const FILES=[
+["design 1","1.jpg","1OoHxKjmjsuxWfvHiDQC3Ay6V4fhNEQoc"],
+["design 1","2.jpg","1oOS2Uaz_e4Fh_E78BBluiDXKqqjhKOos"],
+["design 1","3.jpg","1ueDRnD6scwTJaOrOcYcfZKIhgxQNC-1c"],
+["design 1","4.jpg","11TV0dEGc3rMqohm2_4UsHwl2lcYQPDTO"],
+["design 1","5.jpg","1_LZ_kE5V75j0Ak7wildbgcRexBKmlmr7"],
+["design 1","6.jpg","1cP6MqtXBnxArmNkUW4IHOAGL-ecHJXmW"],
+["design 1","7.jpg","11q_DMtlXRQgot9NA1JByIcIsQBDtedcl"],
+["design 1","8.jpg","1qXp-y0idxyyqiNdkS9jEgLBXDac2BbNS"],
+["design 1","artwork png 1.png","1sNBSR7wMqBr6RYdQAI4yiMax7T2NkHJC"],
+["design 1","artwork png 2.png","1iX9A-m36ZB6LaKkn7XtX7CCi0WCwuvtb"],
+["design 1","artwork png 3.png","1R0H47WJQ29C15mhDP98lid_zW9keSEdw"],
+["design 1","artwork png 4.png","1QH6stpxgI1XIGPqhI9I7EatckzIPozUD"],
+["design 1","artwork png 5.png","14kjR0iREe6cvG3FMJejtCJB9YK0r9tZr"],
+["design 1","artwork png 6.png","19Pk6htwbbfJttmYzuQ8wQ9n1PTEPihKh"],
+["design 1","artwork png 7.png","1ztKvIVCUx7GGe-7ktzLgPq6hY3fWPTnL"],
+["design 1","artwork png 8.png","1fMuhI7ezkDOGVGBpvxDDmtMN-R0W4hZT"],
+["design 2","1.jpg","1x_V9ZnQt3kk0xnCHbxcVxcidsI37FFz2"],
+["design 2","2.jpg","1ekr-SN9hMBoj2HrkxL6shkpz_hjZzGtX"],
+["design 2","3.jpg","1vCwkp1GacF3mzFUHYxIGyKuEjg3JMjQf"],
+["design 2","4.jpg","1YDVWDIA1rVwEDFRHqcK-53LYzreOj03_"],
+["design 2","front png 1.png","1HXKgeDmOw7zBGShJ8I_hCtUdIvZXoDXL"],
+["design 2","front png 2.png","1xgip0NVpCaH-bt-y8Cu9MmNtRH2rd48f"],
+["design 2","back png 1.png","1qxpv8kSkitumwZ2aH691sF7srW1Pvbvs"],
+["design 3","1.jpg","19Y9d27QvXu9nQm5nxzwyYBevv0ndbAfu"],
+["design 3","2.jpg","1RzNtFHnzsq_DUwEgxI-9vhih51Lz6f4j"],
+["design 3","3.jpg","1eDJOJZcNVZANWwro5HaRVwMb8lIlPDw0"],
+["design 3","4.jpg","1qxDWkXybHIlanv2oWY412A5ilWwKOdk-"],
+["design 3","back png 2.png","1jAGFU65AtHoOHgQAo1AH9dm-4j-0Rlpm"],
+["design 4","1.jpg","1WFpu-vViOACRElCF2D11eWWcwdksKOBy"],
+["design 4","2.jpg","1tD7Kihr-wymvmBWeVi9AGHjB72Xow-wT"],
+["design 4","3.jpg","1eK5NQPxMAkweyiKYaX_dxMWunN-Nomoh"],
+["design 4","4.jpg","132Mtx_UOGwn8dueuvNy0UltN8u2j1CjR"],
+["design 4","front png 1.png","1cg0xV09VzYclu-iUgmZl2Jxho7uC-vrY"],
+["design 4","back png 1.png","1beMeJ-C38fVNSZ_1w5RgofMqGr1F4cOf"],
+["design 5","1.jpg","1jq55hLktob0LlfcXl5Fx3mWGINzcuBH8"],
+["design 5","2.jpg","1M3t6TrAV5KVxcEqf8306sHea8wvCp-kv"],
+["design 5","3.jpg","15fagI3kfql8dJP7GQhUUThK9DcjFv8zR"],
+["design 5","4.jpg","1OpZHVl4iXH19_Y5TcJE2PPErwkjN5MTP"],
+["design 5","front png 1.png","1f1V0e0FTD9qAvK3Q_e53ZalslM3ciq2n"],
+["design 5","front png 2.png","1Pkf2x4R5x0gSaudz3BRCK42BYyS9IQ8R"],
+["design 5","back png 1.png","1INCbP_UB1rHVq7OCLALjLhYeXGyJO6ce"],
+["design 5","back png 2.png","1rxegCm6D94ITHNzirrhHJkhJBnVysU0G"],
+["design 6","1.jpg","1vLqw5wS3qkzefkpRFNEfO7vHhulMZmaN"],
+["design 6","2.jpg","1TAZGGTMd1NxS2Jfg1XYO-oQk6y2UoceI"],
+["design 6","3.jpg","1oGSmG05zqX7etSrzfSL1u8WpI0xXsm5s"],
+["design 6","4.jpg","1ydP51SkkfitShOpVR4c32im5Burstn2O"],
+["design 6","front png 1.png","14ABHijKMi2RCHIxpFnuoFfHpHbjFNTbg"],
+["design 6","front png 2.png","12aw29Wmjcjqz66GqTOgRjKkZsHFiiHRA"],
+["design 6","back png 1.png","1ByPPtsnTaXxdv0_mOTwwOSCMPmLqy4l6"],
+["design 6","back png 2.png","1UM_P_ptOZ_E5J866vTkDU2A04BdVjFwZ"],
+["design 7","1.jpg","18H3llmIRhTG3CcPX5t0qU6nhi3IJPvnX"],
+["design 7","2.jpg","1w-48vnyK9tS4H-dwmu6HKVBqEj1mHOB7"],
+["design 7","front png 1.png","1vXckHeV_CGKcoxbhMhfz2JW8MP8T0Vor"],
+["design 7","front png 2.png","1UCMA5spoFOQBL5Wcc1oIZjo6j3noQ-X3"],
+["design 8","1.jpg","1XOtmXh-WTp6mNHNMmN9Mwi15QJuZX2ZS"],
+["design 8","2.jpg","16nklkXAQAVXRO5l_pGsCtMMIeWZpWHAw"],
+["design 8","3.jpg","1I31UIawjGhqGT7JajoG1GeO_kPh5g5-m"],
+["design 8","4.jpg","1xZLQGiVdExpw0Ro0dQ-G7yquqsBEvIxA"],
+["design 8","front png 1.png","1waE0A56PupyphFCRstdN1Oopvo5JidxN"],
+["design 8","front png 2.png","1mQ0CGVO0sOXp3es1TGbhwyNMxpPih2vv"],
+["design 8","back png 1.png","1EJL1_THXaubD0OQdx2Oc3o4YxNtpnd9P"],
+["design 8","back png 2.png","1Le7MJLYonR7cfzxiiyP6zAzu_S3uD3Xu"],
+["design 9","1.jpg","1w9KkfAhCnNXj1Q3lWkx5_1zq1ra-xFUN"],
+["design 9","2.jpg","1G2u1ZUdWOv5Lm6UJyp1mmcmR6l7drS9-"],
+["design 9","3.jpg","1D86yMcLExhBbM1zaO3WRsstc9KywwIOF"],
+["design 9","4.jpg","1s5O9nvLkmxg4rPg1IuLf_YJXRqm8oaZ_"],
+["design 9","FRONT PNG.png","13_gCcOBLcX2x_ZRtIv1UXIzMjpln2L8J"],
+["design 9","back png 1.png","1VKThWlqaS-Fn1UNr6N_e4x__HJTDJl4L"],
+["design 9","back png 2.png","1nwKIhQgvMwmJUYOb1yv2IDZNHD8GvKH_"],
+["design 10","1.jpg","1SYfU-M8_7eDDmE8EPgEpgSEVc2oTueEa"],
+["design 10","2.jpg","1iVYU-YiAXvYA1mE0Rxl_gkW6v6a2eI6K"],
+["design 10","artwork png 1.png","1lDYY51REl-FurSfr9AuoOcLRtDkepSxZ"],
+["design 10","artwork png 2.png","1QVvC_j0ED9DbUOFA14lIWRng9keBFvLj"],
+["design 11","1.jpg","1dF6-VrD8Oql3kLw2wsvcy3Ma63gwVpT3"],
+["design 11","2.jpg","10eV1EjEl697PXccQxSqOt5PD5LjbNxQ3"],
+["design 11","3.jpg","1hHRA77KpMhYyj2jp6s_B04O32dnNAtwt"],
+["design 11","4.jpg","1YZirFUzhJF4j9ZQKhRMiy4HLZMSLMPDy"],
+["design 11","front png 1.png","1NMy1rVOx5grnWMr_0JYYoqdV7d54X5sV"],
+["design 11","front png 2.png","1rApkxleiTLk2JzN_S_L3x1dKE6B3VCNQ"],
+["design 11","back png 1.png","1GmJyO4ioC_LHGnA0_czFC5iOQHySy750"],
+["design 11","back png 2.png","15hfuNA8eu917_GljJ7WJjexpbXP8XACP"],
+["design 12","1.jpg","1UtkO0F9x3Alo0wsdFo9X18Tu8LSb-FFj"],
+["design 12","2.jpg","1_GxH7O9CUto3cCW4GnmH8H1293t_-m3X"],
+["design 12","artwork png 1.png","1sKWyTSonh4n2TUTtQFdj9ShSYKyXHALh"],
+["design 12","artwork png 2.png","1NL01xmPHT4LVNgOuvBsbaOVPqi0cgGE6"],
+["design 13","1.jpg","1kyZiaSbyk7HFGmIyPr9pcYVwCYEALa6H"],
+["design 13","2.jpg","1PBOb2pHGbc-WF_mz1z1arN8LZ0bICBac"],
+["design 13","3.jpg","1CkrM_pkqG_B3txTVjQOJJs_YTO2g-nRo"],
+["design 13","artwork png 1.png","1FHVbSy6l6qH_ARNPr1tZ-bNS9XXmoTPd"],
+["design 13","artwork png 2.png","1AyU9GTFtnxKGFxxUVUdK_G0e7-HdkGRW"],
+["design 14","1.jpg","1RJWrd6GezjxisFPeGqS7Gt1JVvJy5f__"],
+["design 14","2.jpg","1q74Z9oHFpSbqXEvhE4lYCgmR6srPDQAq"],
+["design 14","ARTWORK PNG.png","1xjmxBKht_JBmLFW4O-g8OjqEWYkVd5XZ"],
+["design 15","1.jpg","1ko9TeKhbOJMauWR23Lm83xxtOn4ywqvr"],
+["design 15","2.jpg","1mjBzu23g-LchnWY6OiotT423qo9w-Ovt"],
+["design 15","artwork png 1.png","1Q2a9sgsqgsMA40ULDqnfGNPkntXm_sKu"],
+["design 15","artwork png 2.png","1aUmHkdKx1EPs2QMC7cIVxDm82yNjx7ZE"],
+["Logo","logo white.png","10jUnssffRZnkP-cceikUQRTpyPpblC3S"],
+["Logo","black logo.png","1lJsRHOWLA3bFOXZ_YMD46XgWY_CaOB6l"]
+];
+
+const LS_SEL="tts_ig_matches", LS_URL="tts_ig_posturl";
+const thumb=id=>`https://drive.google.com/thumbnail?id=${id}&sz=w480`;
+const view=id=>`https://drive.google.com/file/d/${id}/view`;
+let matched=new Set(JSON.parse(localStorage.getItem(LS_SEL)||"[]"));
+let filter="all";
+
+const folders=[...new Set(FILES.map(f=>f[0]))];
+const isPhoto=n=>n.toLowerCase().endsWith(".jpg");
+
+function renderFilters(){
+  const el=document.getElementById("filters");
+  const mk=(key,label)=>`<button class="chip${filter===key?" on":""}" data-f="${key}">${label}</button>`;
+  el.innerHTML=mk("all","All 99")+mk("photos","Garment photos")+mk("art","Artwork / mockups")+mk("matched","★ Matched");
+  el.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{filter=c.dataset.f;renderFilters();renderGallery();});
+}
+
+function visible(f){
+  const [,name,id]=f;
+  if(filter==="photos")return isPhoto(name);
+  if(filter==="art")return !isPhoto(name);
+  if(filter==="matched")return matched.has(id);
+  return true;
+}
+
+function renderGallery(){
+  const g=document.getElementById("gallery");
+  g.innerHTML="";
+  for(const folder of folders){
+    const items=FILES.filter(f=>f[0]===folder&&visible(f));
+    if(!items.length)continue;
+    const sec=document.createElement("div");sec.className="folder";
+    sec.innerHTML=`<h3>${folder}</h3>`;
+    const cards=document.createElement("div");cards.className="cards";
+    for(const [,name,id] of items){
+      const c=document.createElement("div");
+      c.className="card"+(matched.has(id)?" matched":"");
+      c.innerHTML=`<img loading="lazy" src="${thumb(id)}" alt="${folder} — ${name}">
+        <div class="fallback">can't load preview<br><a href="${view(id)}" target="_blank" rel="noopener">open in Drive ↗</a></div>
+        <div class="nm">${name}</div>`;
+      c.querySelector("img").onerror=e=>{e.target.style.display="none";c.querySelector(".fallback").style.display="block";};
+      c.onclick=e=>{
+        if(e.target.tagName==="A")return;
+        matched.has(id)?matched.delete(id):matched.add(id);
+        localStorage.setItem(LS_SEL,JSON.stringify([...matched]));
+        c.classList.toggle("matched");updateCount();
+        if(filter==="matched")renderGallery();
+      };
+      cards.appendChild(c);
+    }
+    sec.appendChild(cards);g.appendChild(sec);
+  }
+  updateCount();
+}
+
+function updateCount(){document.getElementById("count").textContent=`${matched.size} matched`;}
+
+function setFrame(url){document.getElementById("igframe").src=url;}
+function profileEmbed(){setFrame("https://www.instagram.com/imangadzhi/embed");}
+function postEmbed(raw){
+  const m=raw.match(/instagram\.com\/(?:[^/]+\/)?(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);
+  if(!m){alert("That doesn't look like an Instagram post/reel URL.");return;}
+  localStorage.setItem(LS_URL,raw);
+  setFrame(`https://www.instagram.com/p/${m[1]}/embed/captioned/`);
+}
+
+document.getElementById("loadpost").onclick=()=>postEmbed(document.getElementById("posturl").value.trim());
+document.getElementById("posturl").addEventListener("keydown",e=>{if(e.key==="Enter")postEmbed(e.target.value.trim());});
+document.getElementById("reload").onclick=()=>{const u=localStorage.getItem(LS_URL);u?postEmbed(u):profileEmbed();};
+document.getElementById("clear").onclick=()=>{if(confirm("Clear all matches?")){matched.clear();localStorage.setItem(LS_SEL,"[]");renderGallery();}};
+document.getElementById("copy").onclick=()=>{
+  const lines=FILES.filter(f=>matched.has(f[2])).map(f=>`${f[0]} / ${f[1]} — ${view(f[2])}`);
+  const txt=lines.length?`Matched to Iman Gadzhi's post ${localStorage.getItem(LS_URL)||"(latest)"}:\n`+lines.join("\n"):"(no matches yet)";
+  const out=document.getElementById("out");out.value=txt;out.select();
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).catch(()=>document.execCommand("copy")).finally(()=>{
+    const t=document.getElementById("toast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1400);
+  });
+};
+
+const saved=localStorage.getItem(LS_URL);
+saved?postEmbed(saved):profileEmbed();
+renderFilters();renderGallery();
+</script>
+</body>
+</html>
