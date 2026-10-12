@@ -9,6 +9,7 @@
 | `02-script.md` | Full spoken-Arabic script, ~70 min, with open loops and the offer |
 | `03-lovable-prompt.md` | Prompt to paste into Lovable to build the slide presentation |
 | `04-marketing-plan.md` | Day-by-day plan to get 110+ live viewers, with ready-to-send messages |
+| `05-campaign-plan.md` | Full campaign brief: game site → webinar → 90 Stox, calendar, budget, KPIs |
 
 ## The numbers behind "110 viewers"
 Free webinars usually get **30–40%** of registrants to show up live.
