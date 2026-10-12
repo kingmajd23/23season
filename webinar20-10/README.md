@@ -10,6 +10,8 @@
 | `03-lovable-prompt.md` | Prompt to paste into Lovable to build the slide presentation |
 | `04-marketing-plan.md` | Day-by-day plan to get 110+ live viewers, with ready-to-send messages |
 | `05-campaign-plan.md` | Full campaign brief: game site → webinar → 90 Stox, calendar, budget, KPIs |
+| `06-script-fibonacci.md` | **Script v2 (use this one):** Fibonacci + support/resistance, 500→4,000 ₪ story, offer + gift |
+| `07-lovable-prompt-fibonacci.md` | **Slides v2:** Lovable prompt matching script v2 (46 slides, animated Fibonacci charts) |
 
 ## The numbers behind "110 viewers"
 Free webinars usually get **30–40%** of registrants to show up live.
